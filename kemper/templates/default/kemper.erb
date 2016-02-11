@@ -3,6 +3,6 @@
 	  ServerName "localhost"
 	  ProxyPreserveHost On
 	  ProxyRequests off
-	  ProxyPass        "/"  "http://@address" keepalive=on
-	  ProxyPassReverse "/"  "http://@address"
+	  ProxyPass        "/"  "http://<%= @address %>:8080" keepalive=on
+	  ProxyPassReverse "/"  "http://<%= @address %>:8080"
 </Virtualhost>
