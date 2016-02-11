@@ -26,7 +26,7 @@ script "config apache" do
   EOH
 end
 
-if my_elb = node["opsworks"]["stack"]["elb-load-balancers"]["1"]["dns_name"]
+if my_elb = node["opsworks"]["stack"]["elb-load-balancers"][1]["dns_name"]
   template “/etc/elb.conf” do
     source "elb.erb"
     variables :address => my_elb
