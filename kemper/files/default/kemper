@@ -1,0 +1,8 @@
+<Virtualhost *:80>
+	  DocumentRoot "/var/www/kemper"
+	  ServerName "localhost"
+	  ProxyPreserveHost On
+	  ProxyRequests off
+	  ProxyPass        "/"  "http://www.kemper.com/" keepalive=on
+	  ProxyPassReverse "/"  "http://www.kemper.com/"
+</Virtualhost>
