@@ -3,6 +3,6 @@
 	  ServerName "localhost"
 	  ProxyPreserveHost On
 	  ProxyRequests off
-	  ProxyPass        "/"  "http://www.kemper.com/" keepalive=on
-	  ProxyPassReverse "/"  "http://www.kemper.com/"
+	  ProxyPass        "/"  "http://@address" keepalive=on
+	  ProxyPassReverse "/"  "http://@address"
 </Virtualhost>

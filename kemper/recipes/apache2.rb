@@ -6,12 +6,11 @@ file "Create a file" do
   path "/var/www/index.html"
 end
 
-cookbook_file "Copy a file" do  
-  group "root"
-  mode "0755"
-  owner "ubuntu"
-  path "/etc/apache2/sites-enabled/kemper.txt"
-  source "kemper" 
+if my_elb = node["opsworks"]["stack"]["elb-load-balancers"][1]["dns_name"]
+	template "/etc/apache2/sites-enabled/kemper.txt" do
+	source "kemper.erb"
+	variables :address => my_elb
+  end
 end
 
 script "config apache" do
@@ -26,9 +25,3 @@ script "config apache" do
   EOH
 end
 
-if my_elb = node["opsworks"]["stack"]["elb-load-balancers"][1]["dns_name"]
-  template "/etc/elb.conf" do
-    source "elb.erb"
-    variables :address => my_elb
-  end
-end
