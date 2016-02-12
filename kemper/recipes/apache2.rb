@@ -10,13 +10,7 @@ if my_elb = node["opsworks"]["stack"]["elb-load-balancers"][1]["dns_name"]
 	template "/etc/apache2/sites-enabled/kemper.txt" do
 	source "kemper.erb"
 	variables :address => my_elb
-  end
-end
-
-if my_app = node["opsworks"]["applications"][0]["name"]
-	template "/etc/apache2/sites-enabled/kemper.txt" do
-	source "kemper.erb"
-	variables :appname => my_app
+	variables :appname => node["opsworks"]["applications"][0]["slug_name"]
   end
 end
 
