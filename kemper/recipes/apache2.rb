@@ -6,11 +6,13 @@ file "Create a file" do
   path "/var/www/index.html"
 end
 
-if my_elb = node["opsworks"]["stack"]["elb-load-balancers"][1]["dns_name"]
-	template "/etc/apache2/sites-enabled/kemper.txt" do
-	source "kemper.erb"
-	variables :address => my_elb
-  end
+if my_elb = node["opsworks"]["stack"]["elb-load-balancers"][1]["dns_name"] 
+	if my_app = node["opsworks"]["applications"][0]["slug_name"]
+		template "/etc/apache2/sites-enabled/kemper.txt" do
+			source "kemper.erb"
+			variables :address => my_elb, :appname => my_app
+		end
+	end
 end
 
 script "config apache" do
