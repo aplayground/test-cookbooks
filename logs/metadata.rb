@@ -1,0 +1,5 @@
+name             'logs'
+maintainer       'Kemper DevOps'
+license          'Apache 2.0'
+description      'Installs and configures a Application Logs for CloudWatch'
+version          '0.0.1'
