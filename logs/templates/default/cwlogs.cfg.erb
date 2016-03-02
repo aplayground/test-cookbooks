@@ -11,16 +11,15 @@ state_file = /var/awslogs/state/agent-state
 #
 ## Path of log file for the agent to monitor and upload.
 #
-file = /var/log/apache2/error.log
+#file = /var/log/apache2/error.log
 #
 ## Name of the destination log group.
 #
-log_group_name = Vpc-Sandbox03-TestAppLogs
+#log_group_name = Vpc-Sandbox03-TestAppLogs
 #
 ## Name of the destination log stream.
 #
 #log_stream_name = {instance_id}
-log_stream_name = testapachelogs
 #
 ## Format specifier for timestamp parsing.
 #
@@ -31,4 +30,5 @@ datetime_format = %b %d %H:%M:%S
 datetime_format = [%Y-%m-%d %H:%M:%S]
 log_group_name = <%= node[:opsworks][:stack][:name].gsub(' ', '_') %>
 file = <%= node[:cwlogs][:logfile] %>
+file = <%= node[:tomcat7][:logfile] %>
 log_stream_name = <%= node[:opsworks][:instance][:hostname] %>
