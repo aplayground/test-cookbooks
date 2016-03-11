@@ -3,8 +3,10 @@
 	  ServerName "localhost"
 	  ProxyPreserveHost On
 	  ProxyRequests off
+	  ProxyPass        "/agencyportal"  "http://<%= @address %>:8080/<%= @appname %>/agencyportal" keepalive=on
 	  ProxyPass        "/simplejsp"  "http://<%= @address %>:8080/<%= @appname %>/simplejsp.jsp" keepalive=on
 	  ProxyPass        "/testapp"  "http://<%= @address %>:8080/testApp/hello.jsp" keepalive=on
+	  ProxyPassReverse "/agencyportal"  "http://<%= @address %>:8080/<%= @appname %>/agencyportal"
 	  ProxyPassReverse "/simplejsp"  "http://<%= @address %>:8080/<%= @appname %>/simplejsp.jsp"
 	  ProxyPassReverse "/testapp"  "http://<%= @address %>:8080/testApp/hello.jsp"
 </Virtualhost>
